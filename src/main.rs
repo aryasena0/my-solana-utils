@@ -41,7 +41,11 @@ fn main() {
     match &cli.command {
         Commands::Keypair(args) => {
             let filepath = &args.filepath;
-            convert_keypair_to_base58(filepath);
+            if args.to_base_58 {
+                convert_keypair_to_base58(filepath);
+                return;
+            }
+            println!("Nothing to do");
         }
     }
 }
